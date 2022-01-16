@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title%}blog | john doe{% endblock %}
+
+{% block header %}blog{% endblock %}
+{% block subheader %}{% endblock %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+    {{message}}
+{% endfor %}
+{% endif %}
+{% endwith %}
+<section class="blog">
+    {% for i in range(len) %}
+        <article class="post-preview">
+        {% set post = posts[i] %}
+            {%if post[5] != None%}
+            <img src="{{post[5]}}" alt="">
+            {%endif%}
+            <div class="post-preview-contents">
+                <h1 class="title">{{post[2]}}</h1>
+                <h2 class="time">{{post[1]}}</h2>
+                <p>{{post[3]}}</p>
+                <a href="{{url_for('blogPost', id=post[0])}}">read more...</a>
+            </div>
+        </article>
+    {% endfor %}
+</section>
+{% endblock %}

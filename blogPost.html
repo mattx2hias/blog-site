@@ -1,0 +1,48 @@
+{%extends 'base.html'%}
+
+{%block title%}{{id}}| john doe{%endblock%}
+
+{%block header%}{{title}}{%endblock%}
+
+{%set previousid = id - 1%}
+{%set nextid = id + 1%}
+
+{%block content%}
+<section>
+    <article class="post">
+        {%if imageURL != None%}
+        <div>
+            <img src="{{imageURL}}" alt="">
+        </div>
+        {%endif%}
+        <h1>{{time}}</h1>
+        <!-- {%if editedtime != None%}
+        <h2>edit on {{editedtime}}</h2>
+        {%endif%} -->
+        <div class="body">
+            {{ body }}
+        </div>
+    </article>
+    <nav class="arrow-nav">
+        {%if arrow=='previous' or arrow=='both'%}
+        <div class="arrow">
+            <a href="{{url_for('blogPost', id=previousid)}}" id="back-arrow">&#10142;</a>
+            <p>previous</p>
+        </div>
+        {%endif%}
+        {%if login%}
+        <div id="edit">
+            <a href="{{url_for('editPost', id=id)}}">edit</a>
+        </div>
+        {%endif%}
+        {%if arrow=='next' or arrow=='both'%}
+        <div class="arrow" id="next-arrow">
+            <a href="{{url_for('blogPost', id=nextid)}}" >&#10142;</a>
+            <p>next</p>
+        </div>
+        {%endif%}
+    </nav>
+</section>
+
+
+{%endblock%}

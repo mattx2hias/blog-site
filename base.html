@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {%block scripts%}{%endblock%}
+    <title>{%block title%}{%endblock%}</title>
+</head>
+<body>
+    <div class="main-header">
+        <div class="main-nav">
+            <ul>
+                <li><a href="{{url_for('about')}}" class="a-text">about</a></li>
+                <li><a href="{{url_for('blog')}}" class="a-text">blog</a></li>
+                <li><a href="{{url_for('projects')}}" class="a-text">projects</a></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h1>{%block header%}{%endblock%}</h1>
+            <h2>{%block subheader%}{%endblock%}</h2>
+        </div>
+    </div>
+    <main>{%block content%}{%endblock%}</main>
+</body>
+</html>

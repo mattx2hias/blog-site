@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+
+{%block title%}login | matt.matthias{%endblock%}
+
+{%block header%}login{%endblock%}
+
+{%block content%}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+<section class="login">
+    <form action="" method="post">
+        <label for="username">username </label>
+        <input type="text" name='username' autofocus required>
+        <label for="password">password</label>
+        <input type="password" name='password' minlength='8' required>
+
+        <input type="submit" value="Login">
+    </form>
+</section>
+{%endblock%}
